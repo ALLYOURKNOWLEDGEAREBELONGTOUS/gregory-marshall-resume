@@ -97,4 +97,26 @@ header {
 .icon-btn:hover {
     color: #0d6efd;
 }
+/* Prevent horizontal overflow on the whole page */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Make the contact form inputs large enough to prevent iOS auto-zoom */
+@media (max-width: 768px) {
+    input, textarea, select {
+        font-size: 16px !important; 
+    }
+    
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    /* Add some "breathing room" to the bottom of the page */
+    body {
+        padding-bottom: 50px;
+    }
+}
 

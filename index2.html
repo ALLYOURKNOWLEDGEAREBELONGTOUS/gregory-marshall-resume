@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gregory Marshall | Senior Technical Writer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;700;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --accent: #ff3e00;
+            --bg: #050505;
+            --glass: rgba(255, 255, 255, 0.05);
+            --text-main: #ffffff;
+            --text-sub: #a1a1aa;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            background-image: radial-gradient(circle at 10% 20%, rgba(255, 62, 0, 0.07) 0%, transparent 30%);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--glass);
+            padding: 12px 0;
+        }
+
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+        header { margin-bottom: 20px; }
+
+        h1 {
+            font-family: 'Lexend Deca', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 800;
+            margin: 0;
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+
+        .hero-title {
+            color: var(--accent);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        .social-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 30px 0; }
+        @media (min-width: 600px) { .social-grid { grid-template-columns: repeat(4, 1fr); } }
+
+        .social-btn, .submit-btn {
+            display: flex; align-items: center; justify-content: center; background: var(--glass); color: #fff;
+            text-decoration: none; padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);
+            font-family: 'Lexend Deca'; font-weight: 700; font-size: 0.85rem; transition: 0.3s;
+            cursor: pointer; gap: 10px;
+        }
+
+        .social-btn:hover { background: var(--accent); transform: translateY(-2px); }
+
+        section { margin-bottom: 80px; scroll-margin-top: 80px; }
+        h2 { color: var(--accent); font-family: 'Lexend Deca'; font-size: 1.8rem; border-bottom: 1px solid var(--glass); padding-bottom: 10px; }
+
+        .prof-summary {
+            padding: 25px;
+            background: var(--glass);
+            border-left: 4px solid var(--accent);
+            font-size: 1.1rem;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .skill-card { background: var(--glass); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
+        .skill-card h4 { color: var(--accent); margin: 0 0 10px 0; text-transform: uppercase; }
+
+        .acc-item { margin-bottom: 15px; background: var(--glass); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
+        .acc-btn {
+            width: 100%; padding: 25px; background: none; border: none;
+            display: flex; justify-content: space-between; cursor: pointer;
+            color: var(--text-main); font-size: 1.2rem; font-weight: 700; font-family: 'Lexend Deca'; text-align: left;
+        }
+
+        .acc-content { max-height: 0; overflow: hidden; transition: 0.4s ease-out; }
+        .inner { padding: 0 25px 25px; color: var(--text-sub); }
+        .inner ul { padding-left: 20px; }
+        .inner li { margin-bottom: 10px; }
+        .meta-text { color: var(--accent); font-weight: 700; font-size: 0.85rem; display: block; margin-bottom: 10px; text-transform: uppercase; }
+
+        .edu-table { width: 100%; border-collapse: collapse; }
+        .edu-table td { padding: 15px; border-bottom: 1px solid var(--glass); font-size: 0.95rem; }
+        .edu-year { text-align: right; color: var(--accent); font-weight: 700; width: 120px; }
+
+        .contact-form { background: var(--glass); padding: 40px; border-radius: 20px; }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; margin-bottom: 10px; font-weight: 600; color: var(--accent); font-size: 0.8rem; }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px; color: #fff; font-family: inherit; box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <a href="#summary" class="nav-link">Summary</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#contact" class="nav-link">Contact</a>
+    </div>
+</nav>
+
+<div class="container">
+    <header>
+        <h1>GREGORY MARSHALL</h1>
+        <div class="hero-title">Senior Technical Writer</div>
+        <p style="color: var(--text-sub);">gregorymarshall@outlook.com | 206-335-4047 | Seattle, WA</p>
+    </header>
+
+    <div class="social-grid">
+        <a href="#" class="social-btn"><i class="fab fa-linkedin"></i> LINKEDIN</a>
+        <a href="#" class="social-btn"><i class="fas fa-briefcase"></i> PORTFOLIO</a>
+        <a href="#" class="social-btn"><i class="fab fa-twitter"></i> TWITTER</a>
+        <a href="#" class="social-btn"><i class="fab fa-youtube"></i> YOUTUBE</a>
+    </div>
+
+    <section id="summary">
+        <h2>PROFESSIONAL SUMMARY</h2>
+        <div class="prof-summary">
+            Highly accomplished and results-oriented Senior Technical Writer with over 10 years of experience in crafting clear and concise documentation for diverse audiences across various industries.  Adept at collaborating with cross-functional teams, managing multiple projects, and delivering high-quality content within tight deadlines. 
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>CORE SKILLS</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h4>Technical Writing</h4>
+                <p>Expert in creating clear, concise, and user-friendly documentation for diverse audiences. </p>
+            </div>
+            <div class="skill-card">
+                <h4>Cloud Services</h4>
+                <p>Deep understanding of AWS, Microsoft Azure, Google Cloud, and Oracle Cloud Infrastructure. </p>
+            </div>
+            <div class="skill-card">
+                <h4>Stack & Tools</h4>
+                <p>Confluence, Jira, Slack, Git, GitHub, Postman, Markdown, VS Code, Docker, Linux, MacOS, Windows. </p>
+            </div>
+            <div class="skill-card">
+                <h4>Management</h4>
+                <p>Proficient in CMS platforms like SharePoint and Backstage.io.  Expert in Agile project management. </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>EXPERIENCE</h2>
+        <div class="accordion">
+            <div class="acc-item">
+                <button class="acc-btn" onclick="toggle(this)">FORD MOTORS <span>+</span></button>
+                <div class="acc-content"><div class="inner">
+                    <span class="meta-text">2023-2024 | Seattle, WA</span>
+                    <ul>
+                        <li>Authored developer content for API onboarding, technical overviews, architecture diagrams, workflows, and how-to guides for the Connected Vehicle Cloud platform. </li>
+                        <li>Migrated developer content to Backstage.io; resolved content rendering issues; created and reviewed templates. </li>
+                        <li>Researched and proposed new functionality to automate routine tasks. </li>
+                    </ul>
+                </div></div>
+            </div>
+            <div class="acc-item">
+                <button class="acc-btn" onclick="toggle(this)">ADOBE <span>+</span></button>
+                <div class="acc-content"><div class="inner">
+                    <span class="meta-text">2022 | Seattle, WA</span>
+                    <ul>
+                        <li>Authored onboarding guides, technology overviews, architectural diagrams, and code samples for Adobe Commerce on Cloud developers. </li>
+                        <li>Collaborated with stakeholders on content plans for Blue/Green deployment and disaster recovery features. </li>
+                        <li>Engaged with the Magento open-source community to address and fix reported content issues. </li>
+                    </ul>
+                </div></div>
+            </div>
+            <div class="acc-item">
+                <button class="acc-btn" onclick="toggle(this)">ORACLE <span>+</span></button>
+                <div class="acc-content"><div class="inner">
+                    <span class="meta-text">2020-2021 | Seattle, WA</span>
+                    <ul>
+                        <li>Authored OCI content for workflow as a service, multifactor authentication (MFA), SSO, certificate services, and identity management. </li>
+                        <li>Helped obtain FedRAMP+ certification for IL5 systems by reviewing security control responses and terminology. </li>
+                    </ul>
+                </div></div>
+            </div>
+            <div class="acc-item">
+                <button class="acc-btn" onclick="toggle(this)">WALT DISNEY COMPANY <span>+</span></button>
+                <div class="acc-content"><div class="inner">
+                    <span class="meta-text">2018-2019 | Seattle, WA</span>
+                    <ul>
+                        <li>Authored mobile SDK REST API documentation for v2 release to support integrations with CDN and Unified Messaging platforms. </li>
+                        <li>Redesigned the API Confluence portal to consolidate, purge, and reuse content to improve discoverability. </li>
+                        <li>Authored step-by-step platform upgrade guides for key customer scenarios. </li>
+                    </ul>
+                </div></div>
+            </div>
+            <div class="acc-item">
+                <button class="acc-btn" onclick="toggle(this)">CITY OF SEATTLE <span>+</span></button>
+                <div class="acc-content"><div class="inner">
+                    <span class="meta-text">2016-2018 | Seattle, WA</span>
+                    <ul>
+                        <li>Wrote 200+ IT technical standard operational procedures (SOP) to capture tribal knowledge for data center migration. </li>
+                        <li>Designed UI layouts and content rendering for all content types. </li>
+                        <li>Authored Active Directory Governance Risk & Compliance (GRC) runbooks for IDM and security response. </li>
+                    </ul>
+                </div></div>
+            </div>
+            <div class="acc-item">
+                <button class="acc-btn" onclick="toggle(this)">UW MEDICINE <span>+</span></button>
+                <div class="acc-content"><div class="inner">
+                    <span class="meta-text">2014-2015 | Seattle, WA</span>
+                    <ul>
+                        <li>Managed 24x7 IT Security incident response and presented data security/privacy requirements to new UW medical students. </li>
+                        <li>Designed a SharePoint site to automate the mapping of NIST 800-053r4 and HIPAA security controls to infrastructure services. </li>
+                        <li>Conducted 25 internal application security audits to identify and close critical security gaps. </li>
+                    </ul>
+                </div></div>
+            </div>
+            <div class="acc-item">
+                <button class="acc-btn" onclick="toggle(this)">MICROSOFT CORPORATION <span>+</span></button>
+                <div class="acc-content"><div class="inner">
+                    <span class="meta-text">2007-2013 | Redmond, WA</span>
+                    <ul>
+                        <li>Drove content strategy for 8 technical writers and 2 editors focused on security content for Group Policy, WSUS, UAC, and BitLocker. </li>
+                        <li>Authored the "Controlling Windows Communication with the Internet" guide for inbound and outbound security management. </li>
+                        <li>Awarded quarterly "Gold Star Award" for resolving the top 20 Windows system errors click on by customers using Windows Event Viewer. </li>
+                    </ul>
+                </div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2>EDUCATION</h2>
+        <table class="edu-table">
+            <tr><td>Unix & Linux Administration, University of Washington </td><td class="edu-year">2004-2005</td></tr>
+            <tr><td>Project Management, University of Washington </td><td class="edu-year">2003-2004</td></tr>
+            <tr><td>Data Communications, University of Washington </td><td class="edu-year">1995-1996</td></tr>
+            <tr><td>Software Product Management, University of Washington </td><td class="edu-year">1994-1995</td></tr>
+            <tr><td>BS, Psychology, University of Washington </td><td class="edu-year">1990-1994</td></tr>
+            <tr><td>Basic Military Training, Logistics, Data Processing, USAF </td><td class="edu-year">1983-1988</td></tr>
+        </table>
+    </section>
+
+    <section id="contact">
+        <h2>CONTACT</h2>
+        <div class="acc-item">
+            <button class="acc-btn" onclick="toggle(this)">CONNECT WITH ME <span>+</span></button>
+            <div class="acc-content"><div class="inner">
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label>NAME</label>
+                        <input type="text" placeholder="Enter name">
+                    </div>
+                    <div class="form-group">
+                        <label>EMAIL</label>
+                        <input type="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label>MESSAGE</label>
+                        <textarea rows="4" placeholder="How can I help?"></textarea>
+                    </div>
+                    <button class="submit-btn"><i class="fas fa-paper-plane"></i> SEND MESSAGE</button>
+                </div>
+            </div></div>
+        </div>
+    </section>
+</div>
+
+<script>
+    function toggle(btn) {
+        const content = btn.nextElementSibling;
+        const isOpen = content.style.maxHeight;
+        if (!isOpen) {
+            content.style.maxHeight = content.scrollHeight + "px";
+            btn.querySelector('span').innerText = '-';
+        } else {
+            content.style.maxHeight = null;
+            btn.querySelector('span').innerText = '+';
+        }
+    }
+</script>
+
+</body>
+</html>
